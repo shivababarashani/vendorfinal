@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<input type="submit" value="ذخیره" onclick="Save()" class="btn btn-primary" />
+<script>
+    function Save() {
+        debugger;
+        //for (var i = 1; i < productionRateCounter; i++) {
+        //    var data = {};
+        //    data.productionRateYear = $("#ProductionRateYear" + i + "").val();
+        //    data.productionRateAmount = $("#ProductionRateAmount" + i + "").val();
+        //    quotations.push(data);
+        //}
+
+        var SendingUrl = '@Url.Action("IsAcssept", "Products")';
+
+        $.ajax(
+            {
+                type: "POST",
+                url: SendingUrl,
+                data: {
+                    id: 1,
+                    AccessTypeId: "",
+                    Reason: ""
+                },
+                success: function (data) {
+                    ;
+                }
+
+            });
+    }
+</script>
+

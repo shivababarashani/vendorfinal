@@ -1,0 +1,355 @@
+﻿
+
+@model Vendor.Web.Areas.VendorService.Models.ProductViewModel
+
+@{
+    ViewData["Title"] = "افزودن";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link type="text/css" rel="stylesheet" href="../node_modules/vazir-font/dist/font-face.css" />
+    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css" />
+    <link href="~/dist/css/bootstrap-rtl.min.css" rel="stylesheet" />
+    <link href="~/dist/kamadatepicker.min.css" rel="stylesheet" />
+    <script src="~/dist/js/plugins/jquery/jquery.js"></script>
+    <script src="~/dist/js/plugins/bootstrap/js/bootstrap.js"></script>
+    <script src="~/dist/kamadatepicker.min.js"></script>
+    <script src="~/dist/kamadatepicker.holidays.js"></script>
+}
+
+<h4>افزودن</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form name="form" method="post" asp-action="Create" enctype="multipart/form-data">
+            @*asp-action="Create" enctype="multipart/form-data"*@
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <div class="form-group">
+                        <label asp-for="Product.Code" class="control-label"></label>
+                        <input id="ProductCode" class="form-control" />
+                        <span asp-validation-for="Product.Code" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 form-group">
+                    <div class="form-group">
+                        <label asp-for="Product.Description" class="control-label"></label>
+                        <input id="ProductDescription" class="form-control" />
+                        <span asp-validation-for="Product.Description" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <div class="form-group">
+                        <label asp-for="Product.ProductTypeId" class="control-label"></label>
+                        <select id="ProductProductTypeId" class="form-control" asp-items="ViewBag.ProductTypeId"></select>
+                    </div>
+                </div>
+                <div class="col-md-6 form-group">
+                    <div class="form-group">
+                        <label asp-for="Product.CompanyId" class="control-label"></label>
+                        <select id="ProductCompanyId" class="form-control" asp-items="ViewBag.CompanyId"></select>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <div class="form-group">
+                        <label asp-for="Product.CorroborantId" class="control-label"></label>
+                        <select id="ProductCorroborantId" class="form-control" asp-items="ViewBag.CorroborantId"></select>
+                    </div>
+                </div>
+                <div class="col-md-6 form-group">
+                    <div class="form-group form-check">
+                        <label class="control-label">لیست مراکز تاییدکننده محصولات تولیدی</label>
+                        <input id="ProductManufacturerCenters" class="form-control" />
+                        <span asp-validation-for="Product.ManufacturerCenters" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="rounded border border-secondary mb-2">
+                <br />
+                <h6>میزان تولید</h6>
+                <button onclick="AddProductionRate()" id="btnAddProductionRate" style="margin-top: 10px;" type="button" class="btn btn-info">+</button>
+
+
+
+
+                <div class="row accordion-gradient-bcg d-flex justify-content-center" id="productionRateClass">
+
+                    <div class="col-md-12 col-xl-12">
+
+                        <div class="accordion md-accordion accordion-2" id="accordionEx7" role="tablist"
+                             aria-multiselectable="true">
+
+                            <div class="card">
+
+                                <div style="background-color:#d6d6d6!important" class="card-header rgba-stylish-strong z-depth-1 mb-1" role="tab" id="heading1">
+                                    <a style="color:aliceblue" data-toggle="collapse" data-parent="#accordionEx7" href="#collapse1" aria-expanded="true"
+                                       aria-controls="collapse1">
+
+                                        آیتم1 <i class="more-less glyphicon glyphicon-plus"></i>
+
+                                    </a>
+                                </div>
+                                <div id="collapse1" class="collapse show" role="tabpanel" aria-labelledby="heading1"
+                                     data-parent="#accordionEx7">
+                                    <div class="card-body mb-1 rgba-grey-light white-text">
+
+                                        <div class="row">
+                                            <div class="col-md-6 form-group">
+                                                <div class="form-group">
+                                                    <label asp-for="ProductionRate.Year" class="control-label"></label>
+                                                    <input id="ProductionRateYear1" class="form-control" />
+                                                    <span asp-validation-for="ProductionRate.Year" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <div class="form-group">
+                                                    <label asp-for="ProductionRate.Amount" class="control-label"></label>
+                                                    <input id="ProductionRateAmount1" class="form-control" />
+                                                    <span asp-validation-for="ProductionRate.Amount" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+                @*<div class="row" id="productionRateClass">
+                            <div class="col-md-6 form-group">
+                                <div class="form-group">
+                                    <label asp-for="ProductionRate.Year" class="control-label"></label>
+                                    <input id="ProductionRateYear1" class="form-control" />
+                    <span asp-validation-for="ProductionRate.Year" class="text-danger"></span>
+                    </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <div class="form-group">
+                            <label asp-for="ProductionRate.Amount" class="control-label"></label>
+                            <input id="ProductionRateAmount1" class="form-control" />
+                    <span asp-validation-for="ProductionRate.Amount" class="text-danger"></span>
+                    </div>
+                            </div>
+                        </div>*@
+            </div>
+
+            <div class="rounded border border-secondary mb-2">
+                <br />
+                <h6>میزان صادرات</h6>
+                <button onclick="AddExport()" style="margin-top: 10px;" type="button" class="btn btn-info">+</button>
+                <!-- Grid row -->
+                <div class="row accordion-gradient-bcg d-flex justify-content-center" id="exportClass">
+
+                    <!-- Grid column -->
+                    <div class="col-md-12 col-xl-12">
+
+                        <!--Accordion wrapper-->
+                        <div class="accordion md-accordion accordion-2" id="accordionEx7" role="tablist"
+                             aria-multiselectable="true">
+
+                            <!-- Accordion card -->
+                            <div class="card">
+
+                                <!-- Card header -->
+                                <div style="background-color:#d6d6d6!important" class="card-header rgba-stylish-strong z-depth-1 mb-1" role="tab" id="heading1">
+                                    <a style="color:aliceblue" data-toggle="collapse" data-parent="#accordionEx7" href="#collapse1" aria-expanded="true"
+                                       aria-controls="collapse1">
+
+                                        آیتم1 <i class="fas fa-angle-down rotate-icon"></i>
+
+                                    </a>
+                                </div>
+
+                                <!-- Card body -->
+                                <div id="collapse1" class="collapse show" role="tabpanel" aria-labelledby="heading1"
+                                     data-parent="#accordionEx7">
+                                    <div class="card-body mb-1 rgba-grey-light white-text">
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="row">
+
+                                                    <div class="col-md-6 form-group">
+                                                        <div class="form-group">
+                                                            <label asp-for="Export.Year" class="control-label"></label>
+                                                            <input id="ExportYear1" class="form-control" />
+                                                            <span asp-validation-for="Export.Year" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 form-group">
+                                                        <div class="form-group">
+                                                            <label asp-for="Export.Employer" class="control-label"></label>
+                                                            <input id="ExportEmployer1" class="form-control" />
+                                                            <span asp-validation-for="Export.Employer" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6 form-group">
+                                                        <div class="form-group">
+                                                            <label asp-for="Export.ContractNumber" class="control-label"></label>
+                                                            <input id="ExportContractNumber1" class="form-control" />
+                                                            <span asp-validation-for="Export.ContractNumber" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 form-group">
+                                                        <div class="form-group">
+                                                            <label asp-for="Export.WeightNumber" class="control-label"></label>
+                                                            <input id="ExportWeightNumber1" class="form-control" />
+                                                            <span asp-validation-for="Export.WeightNumber" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label asp-for="Export.Description" class="control-label"></label>
+                                                    <input id="ExportDescription1" class="form-control" />
+                                                    <span asp-validation-for="Export.Description" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Accordion card -->
+
+
+                        </div>
+                        <!--/.Accordion wrapper-->
+
+                    </div>
+                    <!-- Grid column -->
+
+
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <div class="form-group">
+                        <label class="control-label">بارگذاری مدارک تایید کننده</label>
+                        <input type="hidden" id="UploadControlForm" name="UploadControlForm" value="">
+                        <input required="required" type="file" id="UploadControlForm" name="UploadControlForm" class="form-control form-control-sm">
+
+                        <span asp-validation-for="Product.UploadControlForm" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input  mr-2" id="ProductGuarantee" type="checkbox" /><span class="mr-4"> آیا محصولات دارای ضمانت کیفیت، گارانتی و خدمات پس از فروش می باشد؟ </span>
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input mr-2" id="ProductEnvironment" type="checkbox" /><span class="mr-4"> آیا مسائل زیست محیطی در تولید محصول مورد توجه قرار گرفته است؟</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="ذخیره" onclick="Save()" class="btn btn-primary" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<script>
+    var productionRateCounter = 2;
+    function AddProductionRate() {
+        debugger;
+        if (productionRateCounter < 5)
+            // $('#productionRateClass').append("<div class='col-md-6 form-group'><div class='form-group'><label  class='control-label'>سال</label><input id='ProductionRateYear" + productionRateCounter + "'' class='form-control' /></div ></div ><div class='col-md-6 form-group'><div class='form-group'><label  class='control-label'>مقدار</label><input id='ProductionRateAmount" + productionRateCounter + "' class='form-control' /></div></div>");
+            $('#productionRateClass').append("<div class='col-md-12 col-xl-12'><div class='accordion md-accordion accordion-2' id='accordionEx7' role='tablist' aria-multiselectable='true'><div class='card'><div style='background-color:#d6d6d6!important' class='card-header rgba-stylish-strong z-depth-1 mb-1' role='tab' id='heading" + productionRateCounter + "'><a style='color: aliceblue' data-toggle='collapse' data-parent='#accordionEx7' href='#collapse" + productionRateCounter + "' aria-expanded='true' aria-controls='collapse" + productionRateCounter + "'>آیتم" + productionRateCounter + " <i class='fas fa-angle-down rotate-icon'></i></h5></a></div><div id='collapse" + productionRateCounter + "' class='collapse show' role='tabpanel' aria-labelledby='heading" + productionRateCounter + "' data-parent='#accordionEx7'><div class='card-body mb-1 rgba-grey-light white-text'><div class='row' ><div class='col-md-6 form-group'><div class='form-group'><label  class='control-label'>سال</label><input id='ProductionRateYear" + productionRateCounter + "'' class='form-control' /></div ></div ><div class='col-md-6 form-group'><div class='form-group'><label  class='control-label'>مقدار</label><input id='ProductionRateAmount" + productionRateCounter + "' class='form-control' /></div></div></div></div></div></div></div></div>");
+        productionRateCounter++;
+    };
+
+    var exportCounter = 2;
+    function AddExport() {
+        if (exportCounter < 5)
+            $('#exportClass').append("<div class='col-md-12 col-xl-12'><div class='accordion md-accordion accordion-2' id='accordionEx7' role='tablist' aria-multiselectable='true'><div class='card'><div style='background-color:#d6d6d6!important' class='card-header rgba-stylish-strong z-depth-1 mb-1' role='tab' id='heading" + exportCounter + "'><a style='color: aliceblue' data-toggle='collapse' data-parent='#accordionEx7' href='#collapse" + exportCounter + "' aria-expanded='true' aria-controls='collapse" + exportCounter + "'>آیتم" + exportCounter + " <i class='fas fa-angle-down rotate-icon'></i></h5></a></div><div id='collapse" + exportCounter + "' class='collapse show' role='tabpanel' aria-labelledby='heading" + exportCounter + "' data-parent='#accordionEx7'><div class='card-body mb-1 rgba-grey-light white-text'><div class='col-md-12'><div class='row'><div class='col-md-6 form-group'><div class='form-group'><label class='control-label'>سال</label><input id='ExportYear" + exportCounter + "'class='form-control' /></div></div><div class='col-md-6 form-group'><div class='form-group'><label  class='control-label'>کارفرما</label><input id='ExportEmployer" + exportCounter + "' class='form-control' /></div></div></div><div class='row'><div class='col-md-6 form-group'><div class='form-group'><label class='control-label'>شماره قرارداد</label><input id='ExportContractNumber" + exportCounter + "' class='form-control' /></div></div><div class='col-md-6 form-group'><div class='form-group'><label class='control-label'>وزن/مقدار</label><input id='ExportWeightNumber" + exportCounter + "' class='form-control' /></div></div></div><div class='form-group'><label class='control-label'>توضیحات</label><input id='ExportDescription" + exportCounter + "' class='form-control' /></div></div></div></div></div></div></div></div>");
+
+        exportCounter++;
+    };
+
+    var dd = [];
+    var productionRates = [];
+    var exports = [];
+    function Save() {
+        debugger;
+        for (var i = 1; i < productionRateCounter; i++) {
+            var data = {};
+            data.productionRateYear = $("#ProductionRateYear"+i+"").val();
+            data.productionRateAmount = $("#ProductionRateAmount"+i+"").val();
+            productionRates.push(data);
+        }
+        for (var i = 1; i < exportCounter; i++) {
+            var data = {};
+            data.ExportYear = $("#ExportYear" + i + "").val();
+            data.ExportEmployer = $("#ExportEmployer" + i + "").val();
+            data.ExportContractNumber = $("#ExportContractNumber" + i + "").val();
+            data.ExportWeightNumber = $("#ExportWeightNumber" + i + "").val();
+            data.ExportDescription = $("#ExportDescription" + i + "").val();
+            exports.push(data);
+        }
+        //var fileObject = $('#UploadControlForm').get(0).files[0];
+
+        //var newObject = {
+        //    'lastModified': fileObject.lastModified,
+        //    'lastModifiedDate': fileObject.lastModifiedDate,
+        //    'name': fileObject.name,
+        //    'size': fileObject.size,
+        //    'type': fileObject.type
+        //};
+
+        var dd = {};
+        dd.ProductCode = $("#ProductCode").val();
+        dd.ProductDescription = $("#ProductDescription").val() ;
+        dd.ProductProductTypeId = $("#ProductProductTypeId").val() ;
+        dd.ProductCompanyId = $("#ProductCompanyId").val() ;
+        dd.ProductCorroborantId = $("#ProductCorroborantId").val();
+        dd.ProductGuarantee = $("#ProductGuarantee").is(":checked");
+        dd.ProductEnvironment = $("#ProductEnvironment").is(":checked");
+        //dd.UploadControlForm = newObject;
+        dd.productionRates = productionRates;
+        dd.exports = exports;
+
+
+        var sdafasdf = JSON.stringify(dd);
+         var SendingUrl = '@Url.Action("Create", "Products")';
+            $.ajax(
+                {
+                    type: "POST",
+                    url: SendingUrl,
+                    contentType: 'application/json;charset=utf-8',
+                    async: false,
+                    dataType: "json",
+                    data:  JSON.stringify(dd)
+
+            });
+    };
+
+
+</script>

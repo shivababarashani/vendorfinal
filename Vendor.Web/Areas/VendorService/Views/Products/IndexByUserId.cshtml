@@ -1,0 +1,173 @@
+﻿@model IEnumerable<Vendor.Domain.Entites.Products.Product>
+@using Vendor.Domain.Entites.Products;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="extended">
+    <div class="row justify-content-lg-center">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title-wrap bar-success mb-2 text-bold-700 font-size-1-3">
+                        محصول
+                    </div>
+                </div>
+
+                <div class="col-lg-12 container-fluid  text-right">
+                    <a asp-action="Create"  class="btn btn-outline btn-success font-size-0-9"><i class="fas fa-plus"></i> افزودن </a>
+                </div>
+
+                <div class="card-body m-3">
+                    <div class="">
+                        <table class="table table-responsive-md text-center table-bordered table-striped" id="mytable">
+                            <thead class="thead-dark text-white">
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Code)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Description)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ProductType)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Corroborant)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.CompanyId)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.IsAccepted)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Reason)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    string bgColor = "";
+                                    if (item.IsAccepted == AcceptedTypes.Accepte)
+                                    {
+                                        bgColor = "#DBF9BD";
+                                    }
+                                    else if (item.IsAccepted == AcceptedTypes.Reject)
+                                    {
+                                        bgColor = "#F5AC9C";
+                                    }
+                                    else
+                                    {
+                                        bgColor = "none";
+                                    }
+                                    <tr style='background-color: @(bgColor);'>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Code)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Description)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ProductType.Id)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Corroborant.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Company.Name)
+                                        </td>
+                                        <td>
+                                            @if (item.IsAccepted == AcceptedTypes.Accepte)
+                                            {
+                                                <span>تایید شده</span>
+                                            }
+                                            else if (item.IsAccepted == AcceptedTypes.Reject)
+                                            {
+                                        <span>عدم تایید</span>
+                                            }
+                                            else if (item.IsAccepted == AcceptedTypes.Edited)
+                                            {
+                                                <span>ویرایش شده</span>
+                                            }
+                                            else
+                                            {
+                                                <span>بررسی نشده</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Reason)
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-sm btn-primary pull-right" onclick="Detail('@item.Id')">جزئیات</a> |
+                                            <a class="btn btn-sm btn-primary pull-right" onclick="Edit('@item.Id')">ویرایش</a> |
+                                            <a class="btn btn-sm btn-danger pull-right" onclick="Del('@item.Id')"> حذف</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+
+    function Add() {
+            var SendingUrl = '@Url.Action("Create", "Products")';
+            $.get(SendingUrl,
+                function (frmEdit) {
+                    $("#itemEdit").html(frmEdit);
+                    $("#edit-files").modal("show");
+
+                });
+        }
+
+    function Edit(Id) {
+            var SendingUrl = '@Url.Action("Edit", "Products")';
+        var SendingData = 'Id=' + Id ;
+            $.get(SendingUrl,
+                SendingData,
+                function (frmEdit) {
+                    $("#itemEdit").html(frmEdit);
+                    $("#edit-files").modal("show");
+
+                });
+    }
+
+        function Detail(Id) {
+            var SendingUrl = '@Url.Action("Details", "Products")';
+        var SendingData = 'Id=' + Id ;
+            $.get(SendingUrl,
+                SendingData,
+                function (frmEdit) {
+                    $("#itemEdit").html(frmEdit);
+                    $("#edit-files").modal("show");
+
+                });
+    }
+
+    function Del(Id) {
+            var SendingUrl = '@Url.Action("Delete", "Products")';
+        var SendingData = 'Id=' +Id;
+            $.get(SendingUrl,
+                SendingData,
+                function (frmEdit) {
+                    $("#itemEdit").html(frmEdit);
+                    $("#edit-files").modal("show");
+
+                });
+        }
+
+
+</script>
+
+
+

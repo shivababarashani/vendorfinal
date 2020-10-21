@@ -1,0 +1,1017 @@
+﻿@model Vendor.Web.Models.CompanyViewModel
+@{
+    ViewData["Title"] = "IndexComplete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link type="text/css" rel="stylesheet" href="../node_modules/vazir-font/dist/font-face.css" />
+    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css" />
+    <link href="~/dist/css/bootstrap-rtl.min.css" rel="stylesheet" />
+    <link href="~/dist/kamadatepicker.min.css" rel="stylesheet" />
+    <script src="~/dist/js/plugins/jquery/jquery.js"></script>
+    <script src="~/dist/js/plugins/bootstrap/js/bootstrap.js"></script>
+    <script src="~/dist/kamadatepicker.min.js"></script>
+    <script src="~/dist/kamadatepicker.holidays.js"></script>
+
+}
+
+<head>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    <link href="~/css/StepByStep.css" rel="stylesheet" />
+    <script src="~/js/StepByStep.js"></script>
+
+</head>
+
+<div class="container">
+    <div class="stepwizard">
+        <div class="stepwizard-row setup-panel">
+            <div class="stepwizard-step col-xs-3">
+                <a href="#step-1" type="button" class="btn btn-success btn-circle">1</a>
+                <p class="mr-5"><small>اطلاعات شرکت</small></p>
+            </div>
+            <div class="stepwizard-step col-xs-3">
+                <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                <p><small>اطلاعات شعبه</small></p>
+            </div>
+            <div class="stepwizard-step col-xs-3">
+                <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                <p><small>اشخاص</small></p>
+            </div>
+            <div class="stepwizard-step col-xs-3">
+                <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+                <p><small>ماشین آلات</small></p>
+            </div>
+            <div class="stepwizard-step col-xs-3">
+                <a href="#step-5" type="button" class="btn btn-default btn-circle" disabled="disabled">5</a>
+                <p><small>گواهینامه</small></p>
+            </div>
+            <div class="stepwizard-step col-xs-3">
+                <a href="#step-6" type="button" class="btn btn-default btn-circle" disabled="disabled">6</a>
+                <p><small>قراردادها</small></p>
+            </div>
+        </div>
+    </div>
+
+    <form role="form">
+        <div class="panel panel-primary setup-content" id="step-1">
+
+            <div class="panel-body">
+                <div class="rounded border border-secondary mb-2">
+                    <br />
+                    <h6>اطلاعات شرکت</h6>
+                    <div class="row">
+                        <div class="col-md-11">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+                            <div class="row">
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Company.CompanyType" class="control-label"></label>
+                                    <select asp-for="Company.CompanyType.Id" class="form-control" asp-items="ViewBag.CompanyTypeId"></select>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Company.OwnershipType" class="control-label"></label>
+                                    <select asp-for="Company.OwnershipType.Id" class="form-control" asp-items="ViewBag.OwnershipTypeId"></select>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Company.ManufacturingGroup" class="control-label"></label>
+                                    <select asp-for="Company.ManufacturingGroup.Id" class="form-control" asp-items="ViewBag.ProductTypeId"></select>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Company.Name" class="control-label"></label>
+                                    <input asp-for="Company.Name" class="form-control" />
+                                    <span asp-validation-for="Company.Name" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Company.RecordNumber" class="control-label"></label>
+                                    <input asp-for="Company.RecordNumber" class="form-control" />
+                                    <span asp-validation-for="Company.RecordNumber" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Company.RecordDate" class="control-label"></label>
+                                    <input name="CompanyRecordDate" id="date1" class="form-control" />
+                                    <span asp-validation-for="Company.RecordDate" class="text-danger"></span>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Company.RecordPlace" class="control-label"></label>
+                                    <input asp-for="Company.RecordPlace" class="form-control" />
+                                    <span asp-validation-for="Company.RecordPlace" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Company.CompanyStartDate" class="control-label"></label>
+                                    <input name="CompanyCompanyStartDate" id="date2" class="form-control" />
+                                    <span asp-validation-for="Company.CompanyStartDate" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Company.FactoryStartDate" class="control-label"></label>
+                                    <input name="CompanyFactoryStartDate" id="date3" class="form-control" />
+                                    <span asp-validation-for="Company.FactoryStartDate" class="text-danger"></span>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Company.FactoryUseDate" class="control-label"></label>
+                                    <input name="CompanyFactoryUseDate" id="date4" class="form-control" />
+                                    <span asp-validation-for="Company.FactoryUseDate" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Company.NationalId" class="control-label"></label>
+                                    <input asp-for="Company.NationalId" class="form-control" />
+                                    <span asp-validation-for="Company.NationalId" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Company.EconomicCode" class="control-label"></label>
+                                    <input asp-for="Company.EconomicCode" class="form-control" />
+                                    <span asp-validation-for="Company.EconomicCode" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Company.IranCode" class="control-label"></label>
+                                    <input asp-for="Company.IranCode" class="form-control" />
+                                    <span asp-validation-for="Company.IranCode" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Company.UseLicenseNumber" class="control-label"></label>
+                                    <input asp-for="Company.UseLicenseNumber" class="form-control" />
+                                    <span asp-validation-for="Company.UseLicenseNumber" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Company.UseLicenseDate" class="control-label"></label>
+                                    <input name="CompanyUseLicenseDate" id="date5" class="form-control" />
+                                    <span asp-validation-for="Company.UseLicenseDate" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Company.UploadStatutePic" class="control-label"></label>
+                                    <input type="hidden" id="UploadStatutePic" name="UploadStatutePic" value="">
+                                    <input required="required" type="file" id="UploadStatutePic" name="UploadStatutePic" class="form-control form-control-sm">
+                                    <span asp-validation-for="Company.UploadStatutePic" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Company.UploadUseLicensePic" class="control-label"></label>
+                                    <input type="hidden" id="UploadUseLicensePic" name="UploadUseLicensePic" value="">
+                                    <input required="required" type="file" id="UploadUseLicensePic" name="UploadUseLicensePic" class="form-control form-control-sm">
+                                    <span asp-validation-for="Company.UploadUseLicensePic" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Company.UploadOfficialnewspapers" class="control-label"></label>
+                                    <input type="hidden" id="UploadOfficialnewspapers" name="UploadOfficialnewspapers" value="">
+                                    <input required="required" type="file" id="UploadOfficialnewspapers" name="UploadOfficialnewspapers" class="form-control form-control-sm">
+                                    <span asp-validation-for="Company.UploadOfficialnewspapers" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Company.QcProgram" class="control-label"></label>
+                                    <textarea asp-for="Company.QcProgram" class="form-control"></textarea>
+                                    <span asp-validation-for="Company.QcProgram" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Company.ActivityDescription" class="control-label"></label>
+                                    <textarea asp-for="Company.ActivityDescription" class="form-control"></textarea>
+                                    <span asp-validation-for="Company.ActivityDescription" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Company.MaterialList" class="control-label"></label>
+                                    <textarea asp-for="Company.MaterialList" class="form-control"></textarea>
+                                    <span asp-validation-for="Company.MaterialList" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Company.ConstructionMetod" class="control-label"></label>
+                                    <textarea asp-for="Company.ConstructionMetod" class="form-control"></textarea>
+                                    <span asp-validation-for="Company.ConstructionMetod" class="text-danger"></span>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input mr-2" asp-for="Company.Randd" /><span class="mr-4">آیا شرکت مجهز به بخش تحقیق و توسعه (R&D) می باشد؟</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class=" form-group form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input mr-2" id="CompanyResearchMember" onclick="ChangeUploadMemberOfTheInstitute()" asp-for="Company.ResearchMember" /><span class="mr-4"> آیا عضو موسسه پژوهشی، تحقیقاتی، انجمنهای علمی، صنفی، اتحادیه ها و شرکت های دانش بنیان و.. می باشید؟  </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Company.UploadMemberOfTheInstitute" class="control-label"></label>
+                                    <input type="hidden" id="UploadMemberOfTheInstitute" name="UploadMemberOfTheInstitute" value="">
+                                    <input disabled="disabled" type="file" id="CompanyUploadMemberOfTheInstitute" name="UploadMemberOfTheInstitute" class="form-control form-control-sm">
+
+                                    <span asp-validation-for="Company.UploadMemberOfTheInstitute" class="text-danger"></span>
+                                </div>
+                              
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <button class="btn btn-primary nextBtn pull-right" type="button">مرحله بعد</button>
+        </div>
+
+
+        <div class="panel panel-primary setup-content" id="step-2">
+
+            <div class="panel-body">
+                <div class="rounded border border-secondary mb-2">
+                    <br />
+                    <h6>اطلاعات شعب</h6>
+                    <button onclick="AddBranchAddress()" id="btnAddProductionRate" style="margin-top: 10px;" type="button" class="btn btn-info">+</button>
+
+                    <div class="row accordion-gradient-bcg d-flex justify-content-center" id="productionRateClass">
+
+                        <div class="col-md-12 col-xl-12">
+
+                            <div class="accordion md-accordion accordion-2" id="accordionEx7" role="tablist"
+                                 aria-multiselectable="true">
+
+                                <div class="card">
+
+                                    <div style="background-color:#d6d6d6!important" class="card-header rgba-stylish-strong z-depth-1 mb-1" role="tab" id="heading1">
+                                        <a style="color:aliceblue" data-toggle="collapse" data-parent="#accordionEx7" href="#collapse1" aria-expanded="true"
+                                           aria-controls="collapse1">
+
+                                            آیتم1 <i class="more-less glyphicon glyphicon-plus"></i>
+
+                                        </a>
+                                    </div>
+                                    <div id="collapse1" class="collapse show" role="tabpanel" aria-labelledby="heading1"
+                                         data-parent="#accordionEx7">
+                                        <div class="card-body mb-1 rgba-grey-light white-text">
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+
+                                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                                    <div class="row">
+
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="BranchAddress.PostalCode" class="control-label"></label>
+                                                            <input id="BranchAddressPostalCode1" class="form-control" />
+                                                            <span asp-validation-for="BranchAddress.PostalCode" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="BranchAddress.Tel" class="control-label"></label>
+                                                            <input id="BranchAddressTel1" class="form-control" />
+                                                            <span asp-validation-for="BranchAddress.Tel" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="BranchAddress.Fax" class="control-label"></label>
+                                                            <input id="BranchAddressFax1" class="form-control" />
+                                                            <span asp-validation-for="BranchAddress.Fax" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="row">
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="BranchAddress.Email" class="control-label"></label>
+                                                            <input id="BranchAddressEmail1" class="form-control" />
+                                                            <span asp-validation-for="BranchAddress.Email" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="BranchAddress.Website" class="control-label"></label>
+                                                            <input id="BranchAddressWebsite1" class="form-control" />
+                                                            <span asp-validation-for="BranchAddress.Website" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="BranchAddress.Address" class="control-label"></label>
+                                                            <textarea id="BranchAddressAddress1" class="form-control"></textarea>
+                                                            <span asp-validation-for="BranchAddress.Address" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="rounded border border-secondary mb-2">
+                                                        <br />
+                                                        <h6>تعداد کارکنان مرتبط با محصولات تولیدی:</h6>
+                                                        <button onclick="AddBranchStaff()" id="btnBranchStaff" style="margin-top: 10px;" type="button" class="btn btn-info">+</button>
+                                                        <div class="row accordion-gradient-bcg d-flex justify-content-center" id="branchStaffClass">
+
+                                                            <div class="col-md-12 col-xl-12">
+
+                                                                <div class="accordion md-accordion accordion-2" id="BranchStaffaccordionEx7" role="tablist"
+                                                                     aria-multiselectable="true">
+
+                                                                    <div class="card">
+
+                                                                        <div style="background-color:#d6d6d6!important" class="card-header rgba-stylish-strong z-depth-1 mb-1" role="tab" id="BranchStaffheading1">
+                                                                            <a style="color:aliceblue" data-toggle="collapse" data-parent="#BranchStaffaccordionEx7" href="#BranchStaffcollapse1" aria-expanded="true"
+                                                                               aria-controls="BranchStaffaccordion1">
+
+                                                                                آیتم1 <i class="more-less glyphicon glyphicon-plus"></i>
+
+                                                                            </a>
+                                                                        </div>
+                                                                        <div id="BranchStaffcollapse1" class="collapse show" role="tabpanel" aria-labelledby="BranchStaffheading1"
+                                                                             data-parent="#BranchStaffaccordionEx7">
+                                                                            <div class="card-body mb-1 rgba-grey-light white-text">
+
+
+                                                                                <div class="row">
+                                                                                    <div class="col-md-12">
+
+                                                                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                                                                        <div class="row">
+                                                                                            <div class="col-md-4 form-group">
+                                                                                                <label asp-for="BranchStaff.BranchStaffType" class="control-label"></label>
+                                                                                                <select id="BranchStaffBranchStaffTypeId1" class="form-control" asp-items="ViewBag.BranchStaffTypeId"></select>
+                                                                                            </div>
+                                                                                            <div class="col-md-4 form-group">
+                                                                                                <label asp-for="BranchStaff.TechnicalCount" class="control-label"></label>
+                                                                                                <input id="BranchStaffTechnicalCount1" class="form-control" />
+                                                                                                <span asp-validation-for="BranchStaff.TechnicalCount" class="text-danger"></span>
+                                                                                            </div>
+                                                                                            <div class="col-md-4 form-group">
+                                                                                                <label asp-for="BranchStaff.NonTechnicalCount" class="control-label"></label>
+                                                                                                <input id="BranchStaffNonTechnicalCount1" class="form-control" />
+                                                                                                <span asp-validation-for="BranchStaff.NonTechnicalCount" class="text-danger"></span>
+                                                                                            </div>
+                                                                                            <div class="col-md-4 form-group">
+                                                                                                <label class="control-label">بارگذاری لیست بیمه</label>
+                                                                                                <input type="hidden" id="UploadInsurance" name="UploadInsurance" value="">
+                                                                                                <input required="required" type="file" id="UploadInsurance" name="UploadInsurance" class="form-control form-control-sm">
+                                                                                                <span asp-validation-for="BranchStaff.UploadInsurance" class="text-danger"></span>
+
+                                                                                            </div>
+                                                                                        </div>
+
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="rounded border border-secondary mb-2">
+                                                        <br />
+                                                        <h6>زیربناها:</h6>
+                                                        <button onclick="AddBranchInfrastructure()" id="btnBranchInfrastructure" style="margin-top:1%;margin-bottom:1%" type="button" class="btn btn-info">+</button>
+                                                        <div class="row accordion-gradient-bcg d-flex justify-content-center" id="BranchInfrastructureClass">
+
+                                                            <div class="col-md-12 col-xl-12">
+
+                                                                <div class="accordion md-accordion accordion-2" id="BranchInfrastructureEx7" role="tablist"
+                                                                     aria-multiselectable="true">
+
+                                                                    <div class="card">
+
+                                                                        <div style="background-color:#d6d6d6!important" class="card-header rgba-stylish-strong z-depth-1 mb-1" role="tab" id="BranchInfrastructureheading1">
+                                                                            <a style="color:aliceblue" data-toggle="collapse" data-parent="#BranchInfrastructureEx7" href="#BranchInfrastructurecollapse1" aria-expanded="true"
+                                                                               aria-controls="BranchInfrastructureaccordion1">
+
+                                                                                آیتم1 <i class="more-less glyphicon glyphicon-plus"></i>
+
+                                                                            </a>
+                                                                        </div>
+                                                                        <div id="BranchInfrastructurecollapse1" class="collapse show" role="tabpanel" aria-labelledby="BranchInfrastructureheading1"
+                                                                             data-parent="#BranchInfrastructureEx7">
+                                                                            <div class="card-body mb-1 rgba-grey-light white-text">
+
+
+                                                                                <div class="row">
+                                                                                    <div class="col-md-12">
+
+                                                                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                                                                        <div class="row">
+                                                                                            <div class="col-md-4 form-group">
+                                                                                                <label asp-for="BranchInfrastructure.BranchInfrastructureType" class="control-label"></label>
+                                                                                                <select id="BranchInfrastructureBranchInfrastructureTypeId1" class="form-control" asp-items="ViewBag.BranchInfrastructureTypeId"></select>
+                                                                                            </div>
+                                                                                            <div class="col-md-4 form-group">
+                                                                                                <label asp-for="BranchInfrastructure.Area" class="control-label"></label>
+                                                                                                <input id="BranchInfrastructureArea1" class="form-control" />
+                                                                                                <span asp-validation-for="BranchInfrastructure.Area" class="text-danger"></span>
+                                                                                            </div>
+                                                                                            <div class="col-md-4 form-group">
+                                                                                                <label class="control-label">بارگذاری اسناد مالکیت،قراردادهای اجاره</label>
+                                                                                                <input type="hidden" id="UploadOwnershipDocuments" name="UploadOwnershipDocuments" value="">
+                                                                                                <input type="file" id="BranchInfrastructureUploadOwnershipDocuments1" name="UploadOwnershipDocuments" class="form-control form-control-sm">
+                                                                                                <span asp-validation-for="BranchInfrastructure.UploadOwnershipDocuments" class="text-danger"></span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <div class="col-md-6 form-group">
+                                                                                                <input type="radio" id="BranchInfrastructureMelki1" name="BranchInfrastructureInfrastructureType" value="Melki">
+                                                                                                <label for="Melki">ملکی</label>
+                                                                                                <input type="radio" id="BranchInfrastructureEstijari1" name="BranchInfrastructureInfrastructureType" value="Estijari">
+                                                                                                <label for="Estijari">استیجاری</label>
+                                                                                                <span asp-validation-for="BranchInfrastructure.InfrastructureType" class="text-danger"></span>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+
+
+                                                                                </div>
+                                                                            </div>
+
+
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+                <button class="btn btn-primary nextBtn pull-right" type="button">مرحله بعد</button>
+            </div>
+
+        </div>
+
+        <div class="panel panel-primary setup-content" id="step-3">
+
+            <div class="panel-body">
+                <div class="rounded border border-secondary mb-2">
+                    <br />
+                    <h6>اطلاعات اشخاص</h6>
+                    <button onclick="AddCustomer()" id="btnAddCustomer" style="margin-top: 10px;" type="button" class="btn btn-info">+</button>
+
+
+
+
+                    <div class="row accordion-gradient-bcg d-flex justify-content-center" id="customerClass">
+
+                        <div class="col-md-12 col-xl-12">
+
+                            <div class="accordion md-accordion accordion-2" id="CustomerEx7" role="tablist"
+                                 aria-multiselectable="true">
+
+                                <div class="card">
+
+                                    <div style="background-color:#d6d6d6!important" class="card-header rgba-stylish-strong z-depth-1 mb-1" role="tab" id="Customer1">
+                                        <a style="color:aliceblue" data-toggle="collapse" data-parent="#CustomerEx7" href="#Customer1" aria-expanded="true"
+                                           aria-controls="Customer1">
+
+                                            آیتم1 <i class="more-less glyphicon glyphicon-plus"></i>
+
+                                        </a>
+                                    </div>
+                                    <div id="Customer1" class="collapse show" role="tabpanel" aria-labelledby="Customer1"
+                                         data-parent="#CustomerEx7">
+                                        <div class="card-body mb-1 rgba-grey-light white-text">
+
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+
+                                                    <div class="row">
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Customer.CustomerType" class="control-label"></label>
+                                                            <select id="CustomerCustomerTypeId1" class="form-control" asp-items="ViewBag.CustomerTypeId"></select>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Customer.Name" class="control-label"></label>
+                                                            <input id="CustomerName1" class="form-control" />
+                                                            <span asp-validation-for="Customer.Name" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Customer.Family" class="control-label"></label>
+                                                            <input id="CustomerFamily1" class="form-control" />
+                                                            <span asp-validation-for="Customer.Family" class="text-danger"></span>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Customer.FatherName" class="control-label"></label>
+                                                            <input id="CustomerFatherName1" class="form-control" />
+                                                            <span asp-validation-for="Customer.FatherName" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Customer.NationalCode" class="control-label"></label>
+                                                            <input id="CustomerNationalCode1" class="form-control" />
+                                                            <span asp-validation-for="Customer.NationalCode" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Customer.IDNumber" class="control-label"></label>
+                                                            <input id="CustomerIDNumber1" class="form-control" />
+                                                            <span asp-validation-for="Customer.IDNumber" class="text-danger"></span>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Customer.BirthDate" class="control-label"></label>
+                                                            <input name="CustomerBirthDate" id="date6" class="form-control" />
+                                                            <span asp-validation-for="Customer.BirthDate" class="text-danger"></span>
+                                                        </div>
+
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Customer.Tel" class="control-label"></label>
+                                                            <input id="CustomerTel1" class="form-control" />
+                                                            <span asp-validation-for="Customer.Tel" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Customer.Fax" class="control-label"></label>
+                                                            <input id="CustomerFax1" class="form-control" />
+                                                            <span asp-validation-for="Customer.Fax" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Customer.Email" class="control-label"></label>
+                                                            <input id="CustomerEmail1" class="form-control" />
+                                                            <span asp-validation-for="Customer.Email" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Customer.DegreeEducation" class="control-label"></label>
+                                                            <select id="CustomerDegreeEducationId1" class="form-control" asp-items="ViewBag.DegreeEducationId"></select>
+
+                                                            <span asp-validation-for="Customer.DegreeEducationId" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Customer.Post" class="control-label"></label>
+                                                            <input id="CustomerPost1" class="form-control" />
+                                                            <span asp-validation-for="Customer.Post" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Customer.WorkExperience" class="control-label"></label>
+                                                            <input id="CustomerWorkExperience1" class="form-control" />
+                                                            <span asp-validation-for="Customer.WorkExperience" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <label class="control-label">بارگذاری مدارک(کارت ملی،شناسنامه،مدرک تحصیلی)</label>
+                                                            <input type="hidden" id="CustomerUploadDocument" name="CustomerUploadDocuments" value="">
+                                                            <input type="file" id="CustomerUploadDocuments1" name="CustomerUploadDocuments" class="form-control form-control-sm">
+                                                            <span asp-validation-for="Customer.UploadDocuments" class="text-danger"></span>
+
+                                                        </div>
+                                                        <div class="col-md-4 form-group" style="margin-top:4%">
+                                                            <label class="form-check-label">
+                                                                <input class="form-check-input" type="checkbox" id="CustomerTheSignatory1" /> @Html.DisplayNameFor(model => model.Customer.TheSignatory)
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary nextBtn pull-right" type="button">مرحله بعد</button>
+            </div>
+
+        </div>
+
+
+
+
+        <div class="panel panel-primary setup-content" id="step-4">
+
+            <div class="panel-body">
+                <div class="rounded border border-secondary mb-2">
+                    <br />
+                    <h6>اطلاعات ماشین آلات</h6>
+                    <button onclick="AddCar()" id="btnCar" style="margin-top: 10px;" type="button" class="btn btn-info">+</button>
+
+                    <div class="row accordion-gradient-bcg d-flex justify-content-center" id="carClass">
+
+                        <div class="col-md-12 col-xl-12">
+
+                            <div class="accordion md-accordion accordion-2" id="CarEx7" role="tablist"
+                                 aria-multiselectable="true">
+
+                                <div class="card">
+
+                                    <div style="background-color:#d6d6d6!important" class="card-header rgba-stylish-strong z-depth-1 mb-1" role="tab" id="Car1">
+                                        <a style="color:aliceblue" data-toggle="collapse" data-parent="#CarEx7" href="#Car1" aria-expanded="true"
+                                           aria-controls="Car1">
+
+                                            آیتم1 <i class="more-less glyphicon glyphicon-plus"></i>
+
+                                        </a>
+                                    </div>
+                                    <div id="Car1" class="collapse show" role="tabpanel" aria-labelledby="Car1"
+                                         data-parent="#CarEx7">
+                                        <div class="card-body mb-1 rgba-grey-light white-text">
+
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+
+                                                    <div class="row">
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Car.CarType" class="control-label"></label>
+                                                            <select name="CarTypeId" id="CarTypeId1" class="form-control" asp-items="ViewBag.CarTypeId"></select>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Car.Contry" class="control-label"></label>
+                                                            <select name="ContryId" id="ContryId1" class="form-control" asp-items="ViewBag.ContryId"></select>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Car.Count" class="control-label"></label>
+                                                            <input id="CarCount1" class="form-control" />
+                                                            <span asp-validation-for="Car.Count" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Car.ManufactureDate" class="control-label"></label>
+                                                            <input name="CarManufactureDate" class="form-control" id="date7" />
+                                                            <span asp-validation-for="Car.ManufactureDate" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Car.Capacity" class="control-label"></label>
+                                                            <input id="CarCapacity1" class="form-control" />
+                                                            <span asp-validation-for="Car.Capacity" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Car.Description" class="control-label"></label>
+                                                            <textarea id="CarDescription1" class="form-control"></textarea>
+                                                            <span asp-validation-for="Car.Description" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-4 form-group" style="margin-top:3%">
+                                                            <label class="form-check-label">
+                                                                <input class="form-check-input" type="checkbox" id="CarIsEquipment1" onclick="ChangeUploadCalibrationMachine(1)" /> آیا دستگاه متعلق به تجهیزات آزمایشگاهی است؟
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <label class="control-label">بارگذاری اطلاعات کالیبره شدن دستگاه</label>
+                                                            <input type="hidden" id="UploadCalibrationMachine" name="UploadCalibrationMachine" value="">
+                                                            <input disabled="disabled" type="file" id="CarUploadCalibrationMachine1" name="UploadCalibrationMachine" class="form-control form-control-sm">
+                                                            <span asp-validation-for="Car.UploadCalibrationMachine" class="text-danger"></span>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary nextBtn pull-right" type="button">مرحله بعد</button>
+            </div>
+
+        </div>
+
+
+        <div class="panel panel-primary setup-content" id="step-5">
+
+            <div class="panel-body">
+                <div class="rounded border border-secondary mb-2">
+                    <br />
+                    <h6>اطلاعات گواهینامه ها</h6>
+                    <button onclick="AddLicense()" id="btnLicense" style="margin-top: 10px;" type="button" class="btn btn-info">+</button>
+
+                    <div class="row accordion-gradient-bcg d-flex justify-content-center" id="licenseClass">
+
+                        <div class="col-md-12 col-xl-12">
+
+                            <div class="accordion md-accordion accordion-2" id="LicenseEx7" role="tablist"
+                                 aria-multiselectable="true">
+
+                                <div class="card">
+
+                                    <div style="background-color:#d6d6d6!important" class="card-header rgba-stylish-strong z-depth-1 mb-1" role="tab" id="License1">
+                                        <a style="color:aliceblue" data-toggle="collapse" data-parent="#LicenseEx7" href="#License1" aria-expanded="true"
+                                           aria-controls="License1">
+
+                                            آیتم1 <i class="more-less glyphicon glyphicon-plus"></i>
+
+                                        </a>
+                                    </div>
+                                    <div id="License1" class="collapse show" role="tabpanel" aria-labelledby="License1"
+                                         data-parent="#LicenseEx7">
+                                        <div class="card-body mb-1 rgba-grey-light white-text">
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                                    <div class="row">
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="License.LicenseType" class="control-label"></label>
+                                                            <select id="LicenseLicenseTypeId1" class="form-control" asp-items="ViewBag.LicenseTypeId"></select>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="License.StartDate" class="control-label"></label>
+                                                            <input name="LicenseStartDate" id="date8" class="form-control" />
+                                                            <span asp-validation-for="License.StartDate" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="License.EndDate" class="control-label"></label>
+                                                            <input name="LicenseEndDate" id="date9" class="form-control" />
+                                                            <span asp-validation-for="License.EndDate" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row" style="margin-bottom:5%">
+
+                                                        <div class="col-md-4 form-group">
+                                                            <label class="control-label">بارگذاری مدارک</label>
+                                                            <input type="hidden" id="LicenseUploadLinces" name="LicenseUploadLinces" value="">
+                                                            <input type="file" id="LicenseUploadLinces1" name="LicenseUploadLinces" class="form-control form-control-sm">
+                                                            <span asp-validation-for="License.UploadLinces" class="text-danger"></span>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary nextBtn pull-right" type="button">مرحله بعد</button>
+            </div>
+
+        </div>
+
+        <div class="panel panel-primary setup-content" id="step-6">
+
+            <div class="panel-body">
+                <div class="rounded border border-secondary mb-2">
+                    <br />
+                    <h6>اطلاعات قرارداد</h6>
+                    <button onclick="AddLicense()" id="btnLicense" style="margin-top: 10px;" type="button" class="btn btn-info">+</button>
+
+                    <div class="row accordion-gradient-bcg d-flex justify-content-center" id="licenseClass">
+
+                        <div class="col-md-12 col-xl-12">
+
+                            <div class="accordion md-accordion accordion-2" id="LicenseEx7" role="tablist"
+                                 aria-multiselectable="true">
+
+                                <div class="card">
+
+                                    <div style="background-color:#d6d6d6!important" class="card-header rgba-stylish-strong z-depth-1 mb-1" role="tab" id="License1">
+                                        <a style="color:aliceblue" data-toggle="collapse" data-parent="#LicenseEx7" href="#License1" aria-expanded="true"
+                                           aria-controls="License1">
+
+                                            آیتم1 <i class="more-less glyphicon glyphicon-plus"></i>
+
+                                        </a>
+                                    </div>
+                                    <div id="License1" class="collapse show" role="tabpanel" aria-labelledby="License1"
+                                         data-parent="#LicenseEx7">
+                                        <div class="card-body mb-1 rgba-grey-light white-text">
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-6 form-group">
+                                                            <input checked type="radio" id="ContractFinished1" onclick="DisabledItem(1)" name="ContractContractTypeId" value="Finished">
+                                                            <label for="Finished">قراردادهای خاتمه یافته در 5 سال گذشته</label>
+                                                            <span asp-validation-for="Contract.ContractTypeId" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="col-md-6 form-group ">
+                                                            <input type="radio" id="ContractInProcess1" onclick="DisabledItem(1)" name="ContractContractTypeId" value="InProcess">
+                                                            <label for="InProcess">قراردادهای در دست اجرا</label>
+                                                            <span asp-validation-for="Contract.ContractTypeId" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Contract.StartDate" class="control-label"></label>
+                                                            <input name="Contract.StartDate" id="date10" class="form-control" />
+                                                            <span asp-validation-for="Contract.StartDate" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Contract.EndDate" class="control-label"></label>
+                                                            <input name="ContractEndDate" id="date11" class="form-control" />
+                                                            <span asp-validation-for="Contract.EndDate" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Contract.ContractingParty" class="control-label"></label>
+                                                            <input id="ContractContractingParty1" class="form-control" />
+                                                            <span asp-validation-for="Contract.ContractingParty" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Contract.Number" class="control-label"></label>
+                                                            <input id="ContractNumber1" class="form-control" />
+                                                            <span asp-validation-for="Contract.Number" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Contract.Date" class="control-label"></label>
+                                                            <input name="ContractDate" id="date12" class="form-control" />
+                                                            <span asp-validation-for="Contract.Date" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Contract.Amount" class="control-label"></label>
+                                                            <input id="ContractAmount1" class="form-control" />
+                                                            <span asp-validation-for="Contract.Amount" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="row">
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Contract.ProductName" class="control-label"></label>
+                                                            <input id="ContractProductName1" class="form-control" />
+                                                            <span asp-validation-for="Contract.ProductName" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Contract.WeightNumber" class="control-label"></label>
+                                                            <input id="ContractWeightNumber1" class="form-control" />
+                                                            <span asp-validation-for="Contract.WeightNumber" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Contract.Description" class="control-label"></label>
+                                                            <textarea id="ContractDescription1" class="form-control"></textarea>
+                                                            <span asp-validation-for="Contract.Description" class="text-danger"></span>
+                                                        </div>
+                                                        
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Contract.DeliveryTime" class="control-label"></label>
+                                                            <input disabled="disabled" name="ContractDeliveryTime" id="date13" class="form-control" />
+                                                            <span asp-validation-for="Contract.DeliveryTime" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <label asp-for="Contract.Progress" class="control-label"></label>
+                                                            <input disabled="disabled" id="ContractProgress1" class="form-control" />
+                                                            <span asp-validation-for="Contract.Progress" class="text-danger"></span>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            <div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <button class="btn btn-primary pull-right" onclick="Save()" type="button">ذخیره</button>
+            </div>
+
+        </div>
+
+    </form>
+</div>
+
+<script>
+    
+    var productionRates = [];
+    var exports = [];
+    function Save()
+    {
+
+    }
+    function ChangeUploadCalibrationMachine(countOfId) {
+        debugger;
+        if ($("#CarIsEquipment" + countOfId + "").prop("checked")) {
+            $("#CarUploadCalibrationMachine" + countOfId + "").removeAttr('disabled');
+            $("#CarUploadCalibrationMachine" + countOfId + "").attr('required', 'required');
+        }
+        else {
+            $("#CarUploadCalibrationMachine" + countOfId + "").removeAttr('required');
+            $("#CarUploadCalibrationMachine" + countOfId + "").attr('disabled', 'disabled');
+        }
+    }
+    function ChangeUploadMemberOfTheInstitute() {
+        debugger;
+        if ($("#CompanyResearchMember").prop("checked")) {
+            $('#CompanyUploadMemberOfTheInstitute').removeAttr('disabled');
+            $('#CompanyUploadMemberOfTheInstitute').attr('required', 'required');
+        }
+        else {
+            $("#CompanyUploadMemberOfTheInstitute").removeAttr('required');
+            $("#CompanyUploadMemberOfTheInstitute").attr('disabled', 'disabled');
+        }
+    }
+    function DisabledItem(countOfId) {
+        debugger;
+        if ($("#ContractInProcess" + countOfId + "").prop("checked")) {
+            $("#ContractProgress" + countOfId + "").removeAttr('disabled');
+            $("#date13").removeAttr('disabled');
+            $("#date13").attr('required', 'required');
+            $("#ContractProgress" + countOfId + "").attr('required', 'required');
+
+            $("#date11").attr('disabled', 'disabled');
+
+        }
+        else {
+            $("#ContractProgress" + countOfId + "").removeAttr('required');
+            $("#date13").removeAttr('required');
+            $("#ContractProgress" + countOfId + "").attr('disabled', 'disabled');
+            $("#date13").attr('disabled', 'disabled');
+
+            $("#date11").removeAttr('disabled');
+            $("#date11").attr('required', 'required');
+
+        }
+    }
+
+    var customOptions = {
+        twodigit: false
+        , closeAfterSelect: false
+        , nextButtonIcon: "fa fa-arrow-circle-right"
+        , previousButtonIcon: "fa fa-arrow-circle-left"
+        , buttonsColor: "blue"
+        , forceFarsiDigits: true
+        , markToday: true
+        , markHolidays: true
+        , highlightSelectedDay: true
+        , sync: true
+        , gotoToday: true
+    }
+    kamaDatepicker('date1', { buttonsColor: "blue" });
+    kamaDatepicker('date2', { buttonsColor: "blue" });
+    kamaDatepicker('date3', { buttonsColor: "blue" });
+    kamaDatepicker('date4', { buttonsColor: "blue" });
+    kamaDatepicker('date5', { buttonsColor: "blue" });
+    kamaDatepicker('date6', { buttonsColor: "blue" });
+    kamaDatepicker('date7', { buttonsColor: "blue" });
+    kamaDatepicker('date8', { buttonsColor: "blue" });
+    kamaDatepicker('date9', { buttonsColor: "blue" });
+    kamaDatepicker('date10', { buttonsColor: "blue" });
+    kamaDatepicker('date11', { buttonsColor: "blue" });
+    kamaDatepicker('date12', { buttonsColor: "blue" });
+    kamaDatepicker('date13', { buttonsColor: "blue" });
+
+</script>

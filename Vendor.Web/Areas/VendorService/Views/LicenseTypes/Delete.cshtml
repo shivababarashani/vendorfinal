@@ -1,0 +1,31 @@
+﻿@model Vendor.Domain.Entites.Licenses.LicenseType
+@{
+    ViewData["Title"] = "حذف";
+    Layout = "";
+}
+
+<div class="row justify-content-lg-center">
+
+    <div class="card col-lg-9">
+        <div class="card-header">
+            <div class="card-title-wrap bar-success mb-2 text-bold-700 font-size-1-3">
+                حذف
+            </div>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="card-body">
+            <div class="text-right">
+                <h3 class="font-size-0-9">
+                    آیا از حذف مطمئن هستید؟
+                </h3>
+                <div class="col-md-12">
+                    <form asp-action="Delete" method="post" class="text-left">
+                        <input type="hidden" asp-for="Id" />
+                        <a asp-action="Index" asp-route-id="@Model.Id" class="btn btn-sm font-size-0-9">بازگشت </a>
+                        <input type="submit" value="حذف" class="btn btn-sm font-size-0-9 btn-outline-danger" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,250 @@
+﻿@model IEnumerable<Vendor.Domain.Entites.Companies.Company>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="extended">
+    <div class="row justify-content-lg-center">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title-wrap bar-success mb-2 text-bold-700 font-size-1-3">
+                        شرکت
+                    </div>
+                </div>
+
+                <div class="col-lg-12 container-fluid  text-right">
+                    <a onclick="Add()" class="btn btn-outline btn-success font-size-0-9"><i class="fas fa-plus"></i> افزودن </a>
+                </div>
+
+                <div class="card-body m-3">
+                    <div class="">
+                        <table class="table table-responsive-md text-center table-bordered table-striped" id="mytable">
+                            <thead class="thead-dark text-white">
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.RecordNumber)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.RecordDate)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.RecordPlace)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.CompanyStartDate)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.FactoryStartDate)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.FactoryUseDate)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.NationalId)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.EconomicCode)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.UseLicenseNumber)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.UseLicenseDate)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ActivityDescription)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.MaterialList)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Randd)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ConstructionMetod)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.QcProgram)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ResearchMember)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.UploadUseLicensePic)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.UploadStatutePic)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.UploadOfficialnewspapers)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.UploadProductCatalog)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.UploadDocuments)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.UploadMemberOfTheInstitute)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.OwnershipType)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.CompanyType)
+                                    </th>
+                                    @*<th>
+                                        @Html.DisplayNameFor(model => model.Car)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.License)
+                                    </th>*@
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.RecordNumber)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.RecordDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.RecordPlace)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CompanyStartDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.FactoryStartDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.FactoryUseDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.NationalId)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EconomicCode)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UseLicenseNumber)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UseLicenseDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ActivityDescription)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MaterialList)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Randd)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ConstructionMetod)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.QcProgram)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ResearchMember)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UploadUseLicensePic)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UploadStatutePic)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UploadOfficialnewspapers)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UploadProductCatalog)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UploadDocuments)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UploadMemberOfTheInstitute)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.OwnershipType.Id)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CompanyType.Id)
+                                        </td>
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.Car.Id)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.License.Id)
+                                        </td>*@
+                                        <td>
+                                            <a class="btn btn-sm btn-primary pull-right" onclick="Edit('@item.Id')">ویرایش</a> |
+                                            <a class="btn btn-sm btn-danger pull-right" onclick="Del('@item.Id')"> حذف</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+
+    function Add() {
+            var SendingUrl = '@Url.Action("Create", "Companies")';
+            $.get(SendingUrl,
+                function (frmEdit) {
+                    $("#itemEdit").html(frmEdit);
+                    $("#edit-files").modal("show");
+
+                });
+        }
+
+    function Edit(Id) {
+            var SendingUrl = '@Url.Action("Edit", "Companies")';
+        var SendingData = 'Id=' + Id ;
+            $.get(SendingUrl,
+                SendingData,
+                function (frmEdit) {
+                    $("#itemEdit").html(frmEdit);
+                    $("#edit-files").modal("show");
+
+                });
+    }
+
+
+
+    function Del(Id) {
+            var SendingUrl = '@Url.Action("Delete", "Companies")';
+        var SendingData = 'Id=' +Id;
+            $.get(SendingUrl,
+                SendingData,
+                function (frmEdit) {
+                    $("#itemEdit").html(frmEdit);
+                    $("#edit-files").modal("show");
+
+                });
+        }
+
+
+</script>

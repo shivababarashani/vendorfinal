@@ -1,0 +1,101 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+    Layout = "~/Views/Shared/Start_Layout.cshtml";
+}
+
+
+
+
+
+@*<div class="col-lg-12">
+    <form id="login-form">
+
+        <input type="hidden" name="IsIogin" value="login" />
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group ">
+            <input type="text" asp-for="Input.UserName" class="form-control" placeholder="شماره همراه">
+        </div>
+        <div class="form-group has-feedback animated fadeInDown delay-3s">
+            <input type="password" asp-for="Input.Password" class="form-control" placeholder="پسورد">
+
+        </div>
+    
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6 offset-sm-3">
+                    <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="ورود">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                        <a asp-area="Identity" asp-page="/Account/Register" tabindex="5" class="forgot-password">عضویت در سامانه </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                        <a asp-page="./ForgotPassword" tabindex="5" class="forgot-password">رمز عبور خود را فراموش کرده ام؟!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </form>*@
+
+
+  
+<body>
+    <div id="login">
+        <h4 class="text-center text-white pt-5" style="color: #767db9 !important">سامانه وندور لیست</h4>
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form" class="form" action="" method="post">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="form-group">
+                                <label for="username" class="text-info">شماره همراه</label><br>
+                                <input asp-for="Input.UserName" type="text" name="username" id="username" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="text-info">رمز عبور</label><br>
+                                <input asp-for="Input.Password" type="password" name="password" id="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" name="submit" class="btn btn-info btn-md" value="ورود">
+                            
+                            </div>
+                          
+                            
+                            <div class="form-group mt-2">
+                                <label for="remember-me" class="text-info"><span><a asp-page="./ForgotPassword" tabindex="5" class="forgot-password">رمز عبور خود را فراموش کرده ام؟</a></span></label><br>
+                               <a asp-area="Identity" asp-page="/Account/Register" tabindex="5" class="forgot-password">عضویت در سامانه </a><br /><br />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+@section Scripts {
+
+
+
+
+    <partial name="_ValidationScriptsPartial" />
+}

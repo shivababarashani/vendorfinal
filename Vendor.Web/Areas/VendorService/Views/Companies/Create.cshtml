@@ -1,0 +1,262 @@
+﻿@model Vendor.Domain.Entites.Companies.Company
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "";
+    <link type="text/css" rel="stylesheet" href="../node_modules/vazir-font/dist/font-face.css" />
+    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css" />
+    <link href="~/dist/css/bootstrap-rtl.min.css" rel="stylesheet" />
+    <link href="~/dist/kamadatepicker.min.css" rel="stylesheet" />
+    <script src="~/dist/js/plugins/jquery/jquery.js"></script>
+    <script src="~/dist/js/plugins/bootstrap/js/bootstrap.js"></script>
+    <script src="~/dist/kamadatepicker.min.js"></script>
+    <script src="~/dist/kamadatepicker.holidays.js"></script>
+}
+
+
+<h4>ایجاد</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+
+                <div class="col-md-6 form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label asp-for="RecordNumber" class="control-label"></label>
+                    <input asp-for="RecordNumber" class="form-control" />
+                    <span asp-validation-for="RecordNumber" class="text-danger"></span>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label asp-for="RecordDate" class="control-label"></label>
+                    <input asp-for="RecordDate" class="form-control" />
+                    <span asp-validation-for="RecordDate" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label asp-for="RecordPlace" class="control-label"></label>
+                    <input asp-for="RecordPlace" class="form-control" />
+                    <span asp-validation-for="RecordPlace" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label asp-for="CompanyStartDate" class="control-label"></label>
+                    <input asp-for="CompanyStartDate" class="form-control" />
+                    <span asp-validation-for="CompanyStartDate" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label asp-for="FactoryStartDate" class="control-label"></label>
+                    <input asp-for="FactoryStartDate" class="form-control" />
+                    <span asp-validation-for="FactoryStartDate" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-6 form-group">
+                    <label asp-for="FactoryUseDate" class="control-label"></label>
+                    <input asp-for="FactoryUseDate" class="form-control" />
+                    <span asp-validation-for="FactoryUseDate" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label asp-for="NationalId" class="control-label"></label>
+                    <input asp-for="NationalId" class="form-control" />
+                    <span asp-validation-for="NationalId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label asp-for="EconomicCode" class="control-label"></label>
+                    <input asp-for="EconomicCode" class="form-control" />
+                    <span asp-validation-for="EconomicCode" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label asp-for="UseLicenseNumber" class="control-label"></label>
+                    <input asp-for="UseLicenseNumber" class="form-control" />
+                    <span asp-validation-for="UseLicenseNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label asp-for="UseLicenseDate" class="control-label"></label>
+                    <input asp-for="UseLicenseDate" class="form-control" />
+                    <span asp-validation-for="UseLicenseDate" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label asp-for="ActivityDescription" class="control-label"></label>
+                    <input asp-for="ActivityDescription" class="form-control" />
+                    <span asp-validation-for="ActivityDescription" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class=" form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input mr-2" asp-for="ResearchMember" /><span class="mr-4"> آیا عضو موسسه پژوهشی، تحقیقاتی، انجمنهای علمی، صنفی، اتحادیه ها و شرکت های دانش بنیان و.. می باشید؟  </span>
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input mr-2" asp-for="Randd" /><span class="mr-4">آیا شرکت مجهز به بخش تحقیق و توسعه (R&D) می باشد؟</span>
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label asp-for="ConstructionMetod" class="control-label"></label>
+                    <input asp-for="ConstructionMetod" class="form-control" />
+                    <span asp-validation-for="ConstructionMetod" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label asp-for="QcProgram" class="control-label"></label>
+                    <input asp-for="QcProgram" class="form-control" />
+                    <span asp-validation-for="QcProgram" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-6 form-group">
+                    <label asp-for="UploadMemberOfTheInstitute" class="control-label"></label>
+                    <input type="hidden" id="UploadMemberOfTheInstitute" name="UploadMemberOfTheInstitute" value="">
+                    <input required="required" type="file" id="UploadMemberOfTheInstitute" name="UploadMemberOfTheInstitute" class="form-control form-control-sm">
+
+                    <span asp-validation-for="UploadMemberOfTheInstitute" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label asp-for="UploadUseLicensePic" class="control-label"></label>
+                    <input type="hidden" id="UploadUseLicensePic" name="UploadUseLicensePic" value="">
+                    <input required="required" type="file" id="UploadUseLicensePic" name="UploadUseLicensePic" class="form-control form-control-sm">
+
+                    <span asp-validation-for="UploadUseLicensePic" class="text-danger"></span>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label asp-for="UploadStatutePic" class="control-label"></label>
+                    <input type="hidden" id="UploadStatutePic" name="UploadStatutePic" value="">
+                    <input required="required" type="file" id="UploadStatutePic" name="UploadStatutePic" class="form-control form-control-sm">
+
+                    <span asp-validation-for="UploadStatutePic" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label asp-for="UploadOfficialnewspapers" class="control-label"></label>
+                    <input type="hidden" id="UploadOfficialnewspapers" name="UploadOfficialnewspapers" value="">
+                    <input required="required" type="file" id="UploadOfficialnewspapers" name="UploadOfficialnewspapers" class="form-control form-control-sm">
+
+                    <span asp-validation-for="UploadOfficialnewspapers" class="text-danger"></span>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label asp-for="UploadProductCatalog" class="control-label"></label>
+                    <input type="hidden" id="UploadProductCatalog" name="UploadProductCatalog" value="">
+                    <input required="required" type="file" id="UploadProductCatalog" name="UploadProductCatalog" class="form-control form-control-sm">
+
+                    <span asp-validation-for="UploadProductCatalog" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label asp-for="UploadDocuments" class="control-label"></label>
+                    <input type="hidden" id="UploadDocuments" name="UploadDocuments" value="">
+                    <input required="required" type="file" id="UploadDocuments" name="UploadDocuments" class="form-control form-control-sm">
+
+                    <span asp-validation-for="UploadDocuments" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+
+
+                <div class="col-md-6 form-group">
+                    <label asp-for="CompanyType.Id" class="control-label"></label>
+                    <select asp-for="CompanyType.Id" class="form-control" asp-items="ViewBag.CompanyTypeId"></select>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label asp-for="OwnershipType.Id" class="control-label"></label>
+                    <select asp-for="OwnershipType.Id" class="form-control" asp-items="ViewBag.OwnershipTypeId"></select>
+                </div>
+            </div>
+            @*<div class="row">*@
+
+            @*<div class="col-md-6 form-group">
+                    <label asp-for="LicenseId" class="control-label"></label>
+                    <select asp-for="LicenseId" class="form-control" asp-items="ViewBag.LicenseId"></select>
+                </div>*@
+
+            @*<div class="col-md-6 form-group">
+                    <label asp-for="CarId" class="control-label"></label>
+                    <select asp-for="CarId" class="form-control" asp-items="ViewBag.CarId"></select>
+                </div>*@
+            @*</div>*@
+
+            <div class="form-group">
+                <label asp-for="MaterialList" class="control-label"></label>
+                <input asp-for="MaterialList" class="form-control" />
+                <span asp-validation-for="MaterialList" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    kamaDatepicker('date1', { buttonsColor: "blue" });
+
+    var customOptions = {
+        //placeholder: "روز / ماه / سال"
+        twodigit: false
+        , closeAfterSelect: false
+        , nextButtonIcon: "fa fa-arrow-circle-right"
+        , previousButtonIcon: "fa fa-arrow-circle-left"
+        , buttonsColor: "blue"
+        , forceFarsiDigits: true
+        , markToday: true
+        , markHolidays: true
+        , highlightSelectedDay: true
+        , sync: true
+        , gotoToday: true
+    }
+    kamaDatepicker('date2', customOptions);
+
+    kamaDatepicker('date3', {
+        nextButtonIcon: "assets/timeir_prev.png"
+        , previousButtonIcon: "assets/timeir_next.png"
+        , forceFarsiDigits: true
+        , markToday: true
+        , markHolidays: true
+        , highlightSelectedDay: true
+        , sync: true
+        , pastYearsCount: 0
+        , futureYearsCount: 3
+        , swapNextPrev: true
+        , holidays: HOLIDAYS // from kamadatepicker.holidays.js
+        , disableHolidays: true
+    });
+
+    kamaDatepicker('date4', {
+        position: 'top' // top, bottom or auto
+    });
+
+    kamaDatepicker('date5-1', {
+        position: 'auto' // top, bottom or auto
+        , parentId: 'date5-parent'
+    });
+    kamaDatepicker('date5-2', {
+        position: 'auto' // top, bottom or auto
+        , parentId: 'date5-parent'
+    });
+
+    // for testing sync functionallity
+    $("#date2").val("1311/10/01");
+</script>

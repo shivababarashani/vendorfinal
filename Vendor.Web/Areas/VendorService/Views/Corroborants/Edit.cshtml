@@ -1,0 +1,123 @@
+﻿@model Vendor.Domain.Entites.Corroborants.Corroborant
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "";
+    <link type="text/css" rel="stylesheet" href="../node_modules/vazir-font/dist/font-face.css" />
+    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css" />
+    <link href="~/dist/css/bootstrap-rtl.min.css" rel="stylesheet" />
+    <link href="~/dist/kamadatepicker.min.css" rel="stylesheet" />
+    <script src="~/dist/js/plugins/jquery/jquery.js"></script>
+    <script src="~/dist/js/plugins/bootstrap/js/bootstrap.js"></script>
+    <script src="~/dist/kamadatepicker.min.js"></script>
+    <script src="~/dist/kamadatepicker.holidays.js"></script>
+}
+<h4>ویرایش</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <div class="form-group">
+                        <label asp-for="CorroborantTypeId" class="control-label"></label>
+                        <select asp-for="CorroborantTypeId" class="form-control" asp-items="ViewBag.CorroborantTypeId"></select>
+
+                        <span asp-validation-for="CorroborantTypeId" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <label asp-for="StartDate" class="control-label"></label>
+                        <input value="@Model.StartDate.Date" name="startdate" class="form-control" id="date1" />
+                        <span asp-validation-for="StartDate" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 form-group">
+                    <div class="form-group">
+                        <label asp-for="EndDate" class="control-label"></label>
+                        <input value="@Model.EndDate.Date" name="enddate" class="form-control" id="date2" />
+                        <span asp-validation-for="EndDate" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <div class="form-group">
+                        <label class="control-label">بارگذاری مدارک تایید کننده</label>
+                        <input type="hidden" id="UploadControlForm" name="UploadControlForm" value="">
+                        <input required="required" type="file" id="UploadControlForm" name="UploadControlForm" class="form-control form-control-sm">
+
+                        <span asp-validation-for="CorroborantTypeId" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="ذخیره" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    kamaDatepicker('date1', { buttonsColor: "blue" });
+
+    var customOptions = {
+        //placeholder: "روز / ماه / سال"
+        twodigit: false
+        , closeAfterSelect: false
+        , nextButtonIcon: "fa fa-arrow-circle-right"
+        , previousButtonIcon: "fa fa-arrow-circle-left"
+        , buttonsColor: "blue"
+        , forceFarsiDigits: true
+        , markToday: true
+        , markHolidays: true
+        , highlightSelectedDay: true
+        , sync: true
+        , gotoToday: true
+    }
+    kamaDatepicker('date2', customOptions);
+
+    kamaDatepicker('date3', {
+        nextButtonIcon: "assets/timeir_prev.png"
+        , previousButtonIcon: "assets/timeir_next.png"
+        , forceFarsiDigits: true
+        , markToday: true
+        , markHolidays: true
+        , highlightSelectedDay: true
+        , sync: true
+        , pastYearsCount: 0
+        , futureYearsCount: 3
+        , swapNextPrev: true
+        , holidays: HOLIDAYS // from kamadatepicker.holidays.js
+        , disableHolidays: true
+    });
+
+    kamaDatepicker('date4', {
+        position: 'top' // top, bottom or auto
+    });
+
+    kamaDatepicker('date5-1', {
+        position: 'auto' // top, bottom or auto
+        , parentId: 'date5-parent'
+    });
+    kamaDatepicker('date5-2', {
+        position: 'auto' // top, bottom or auto
+        , parentId: 'date5-parent'
+    });
+
+    // for testing sync functionallity
+    $("#date2").val("1311/10/01");
+</script>

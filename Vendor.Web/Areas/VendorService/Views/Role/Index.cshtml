@@ -1,0 +1,115 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
+@{
+    ViewData["Title"] = "فهرست نقش ها";
+}
+
+
+
+<section id="extended">
+    <div class="row justify-content-lg-center">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title-wrap bar-success mb-2 text-bold-700 font-size-1-3">
+                        تخصیص نقش
+                    </div>
+                </div>
+
+               <div class="col-lg-12 container-fluid  text-right">
+                        <a onclick="Add_Role()" class="btn btn-outline btn-success font-size-0-9"><i class="fas fa-plus"></i> افزودن </a>
+                    </div>
+
+                <div class="card-body m-3">
+                    <div class="">
+
+                        <table class="table table-responsive-md text-center table-bordered table-striped" id="mytable">
+                            <thead class="thead-dark text-white">
+
+                                <tr>
+                                    <th>
+                                        ردیف
+                                    </th>
+                                    <th>
+                                        شناسه
+                                    </th>
+                                    <th>
+                                        نام
+                                    </th>
+
+                                    <th>
+                                        عملیات
+                                    </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ int r = 0;}
+                                @foreach (var role in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @{r = r + 1;}
+                                            @r
+                                        </td>
+                                        <td>@role.Id</td>
+                                        <td>@role.Name</td>
+
+                                        <td>
+                                            <a class="btn btn-sm btn-primary pull-right" @*asp-action="Update" asp-route-id="@role.Id"*@ onclick="Edit_Role('@role.Id')">ویرایش</a>
+                                            @*<a asp-action="Details" asp-route-id="@role.Id">جزئیات</a> |
+                                                <a asp-action="Delete" asp-route-id="@role.Id">حذف</a>*@
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+
+    function Add_Role() {
+            var SendingUrl = '@Url.Action("Create", "Role")';
+            $.get(SendingUrl,
+                function (frmEdit) {
+                    $("#itemEdit").html(frmEdit);
+                    $("#edit-files").modal("show");
+
+                });
+        }
+
+    function Edit_Role(RoleId) {
+            var SendingUrl = '@Url.Action("Update", "Role")';
+        var SendingData = 'RoleId=' + RoleId ;
+            $.get(SendingUrl,
+                SendingData,
+                function (frmEdit) {
+                    $("#itemEdit").html(frmEdit);
+                    $("#edit-files").modal("show");
+
+                });
+        }
+
+    function Del_Role(RoleId) {
+            var SendingUrl = '@Url.Action("DeleteAnswer", "Role")';
+        var SendingData = 'RoleId=' + RoleId;
+            $.get(SendingUrl,
+                SendingData,
+                function (frmEdit) {
+                    $("#itemEdit").html(frmEdit);
+                    $("#edit-files").modal("show");
+
+                });
+        }
+
+
+</script>

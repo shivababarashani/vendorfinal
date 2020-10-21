@@ -1,0 +1,165 @@
+﻿@model Vendor.Domain.Entites.Companies.Company
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Company</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RecordNumber" class="control-label"></label>
+                <input asp-for="RecordNumber" class="form-control" />
+                <span asp-validation-for="RecordNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RecordDate" class="control-label"></label>
+                <input asp-for="RecordDate" class="form-control" />
+                <span asp-validation-for="RecordDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RecordPlace" class="control-label"></label>
+                <input asp-for="RecordPlace" class="form-control" />
+                <span asp-validation-for="RecordPlace" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompanyStartDate" class="control-label"></label>
+                <input asp-for="CompanyStartDate" class="form-control" />
+                <span asp-validation-for="CompanyStartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FactoryStartDate" class="control-label"></label>
+                <input asp-for="FactoryStartDate" class="form-control" />
+                <span asp-validation-for="FactoryStartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FactoryUseDate" class="control-label"></label>
+                <input asp-for="FactoryUseDate" class="form-control" />
+                <span asp-validation-for="FactoryUseDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NationalId" class="control-label"></label>
+                <input asp-for="NationalId" class="form-control" />
+                <span asp-validation-for="NationalId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EconomicCode" class="control-label"></label>
+                <input asp-for="EconomicCode" class="form-control" />
+                <span asp-validation-for="EconomicCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UseLicenseNumber" class="control-label"></label>
+                <input asp-for="UseLicenseNumber" class="form-control" />
+                <span asp-validation-for="UseLicenseNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UseLicenseDate" class="control-label"></label>
+                <input asp-for="UseLicenseDate" class="form-control" />
+                <span asp-validation-for="UseLicenseDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ActivityDescription" class="control-label"></label>
+                <input asp-for="ActivityDescription" class="form-control" />
+                <span asp-validation-for="ActivityDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaterialList" class="control-label"></label>
+                <input asp-for="MaterialList" class="form-control" />
+                <span asp-validation-for="MaterialList" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Randd" /> @Html.DisplayNameFor(model => model.Randd)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConstructionMetod" class="control-label"></label>
+                <input asp-for="ConstructionMetod" class="form-control" />
+                <span asp-validation-for="ConstructionMetod" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QcProgram" class="control-label"></label>
+                <input asp-for="QcProgram" class="form-control" />
+                <span asp-validation-for="QcProgram" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResearchMember" class="control-label"></label>
+                <input asp-for="ResearchMember" class="form-control" />
+                <span asp-validation-for="ResearchMember" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UploadUseLicensePic" class="control-label"></label>
+                <input asp-for="UploadUseLicensePic" class="form-control" />
+                <span asp-validation-for="UploadUseLicensePic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UploadStatutePic" class="control-label"></label>
+                <input asp-for="UploadStatutePic" class="form-control" />
+                <span asp-validation-for="UploadStatutePic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UploadOfficialnewspapers" class="control-label"></label>
+                <input asp-for="UploadOfficialnewspapers" class="form-control" />
+                <span asp-validation-for="UploadOfficialnewspapers" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UploadProductCatalog" class="control-label"></label>
+                <input asp-for="UploadProductCatalog" class="form-control" />
+                <span asp-validation-for="UploadProductCatalog" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UploadDocuments" class="control-label"></label>
+                <input asp-for="UploadDocuments" class="form-control" />
+                <span asp-validation-for="UploadDocuments" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UploadMemberOfTheInstitute" class="control-label"></label>
+                <input asp-for="UploadMemberOfTheInstitute" class="form-control" />
+                <span asp-validation-for="UploadMemberOfTheInstitute" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompanyType.Id" class="control-label"></label>
+                <select asp-for="CompanyType.Id" class="form-control" asp-items="ViewBag.CompanyTypeId"></select>
+                <span asp-validation-for="CompanyType.Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OwnershipType.Id" class="control-label"></label>
+                <select asp-for="OwnershipType.Id" class="form-control" asp-items="ViewBag.OwnershipTypeId"></select>
+                <span asp-validation-for="OwnershipType.Id" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="Car.Id" class="control-label"></label>
+                <select asp-for="Car.Id" class="form-control" asp-items="ViewBag.CarId"></select>
+                <span asp-validation-for="Car.Id" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="License.Id" class="control-label"></label>
+                <select asp-for="License.Id" class="form-control" asp-items="ViewBag.LicenseId"></select>
+                <span asp-validation-for="License.Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

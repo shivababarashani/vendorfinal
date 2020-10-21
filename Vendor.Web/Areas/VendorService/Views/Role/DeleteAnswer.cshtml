@@ -1,0 +1,22 @@
+﻿
+@{
+
+    Layout = "";
+}
+
+
+
+
+<div class="bootbox-body">آیا از حذف این بخش مطمئن هستید؟</div>
+<br />
+<button type="submit" style="color: white" class="btn red btn-sm mt-ladda-btn ladda-button btn-circle" data-style="expand-right" data-size="s">
+    <span class="md-click-circle md-click-animate" style="height: 67px; width: 67px; top: -16.2167px; left: 19.0833px;"></span>
+    <span class="ladda-label ">@Html.ActionLink("بله", "Delete", "RoleAdmin", new { RoleId = ViewBag.RoleId }, new { @style = "color: white" })</span>
+</button>
+
+
+<button class="btn btn-default btn-sm btn-circle" type="button" data-dismiss="modal">
+    <span class="md-click-circle md-click-animate" style="height: 67px; width: 67px; top: -16.2167px; left: 19.0833px;"></span>
+    خیر
+</button>
+

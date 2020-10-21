@@ -1,0 +1,23 @@
+﻿
+    @using Stimulsoft.Report.Mvc;
+    @{ Layout = ""; }
+
+    <h2>Show Report in the Viewer</h2>
+
+    <div class="row">
+        @Html.StiNetCoreViewer(new StiNetCoreViewerOptions()
+        {
+
+            Server =
+                            {
+             Controller = "CarTypes"
+
+                            },
+            Actions =
+            {
+                GetReport = "Print",
+                ViewerEvent = "ViewerEvent"
+            }
+        })
+    </div>
+
